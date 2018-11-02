@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TabbedScanning.class);
         startActivity(intent);
     }
+
+
+    public void scan10Chars(View view) {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.addExtra(DecodeHintType.ALLOWED_LENGTHS.name(), new int[] { 10 });
+        integrator.initiateScan();
+    }
+
 
     public void about(View view) {
         new LibsBuilder().start(this);

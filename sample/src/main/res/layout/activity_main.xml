@@ -102,6 +102,12 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/ten_chars"
+            android:onClick="scan10Chars"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/about"
             android:onClick="about"/>
 

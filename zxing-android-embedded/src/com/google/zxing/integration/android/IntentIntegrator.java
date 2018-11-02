@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.CaptureActivity;
 
@@ -409,6 +410,9 @@ public class IntentIntegrator {
                 intent.putExtra(key, (Float) value);
             } else if (value instanceof Bundle) {
                 intent.putExtra(key, (Bundle) value);
+            } else if (key.equals(DecodeHintType.ALLOWED_LENGTHS.name()) || key.equals(DecodeHintType.ALLOWED_EAN_EXTENSIONS)) {
+                // Special case for int[]
+                intent.putExtra(key, (int[])value);
             } else {
                 intent.putExtra(key, value.toString());
             }
